@@ -3,7 +3,8 @@ import random
 
 import numpy
 from PIL import Image
-
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
 
 def load_img_data(path):
     images = os.listdir(path)
@@ -46,6 +47,8 @@ def dataset_split(data_list: list, label_list: list, split_list: list):
         y_test.append(label_list.pop(x))
     x_train = data_list
     y_train = label_list
+    x_train = numpy.array(x_train) / 255
+    x_test = numpy.array(x_test) / 255
     return x_train, y_train, x_test, y_test
 
 
@@ -53,4 +56,7 @@ if __name__ == '__main__':
     data_list, label_list = load_img_data('./dataset/')
     split_list = get_split_index()
     x_train, y_train, x_test, y_test = dataset_split(data_list, label_list, split_list)
-    print()
+    knn = KNeighborsClassifier(n_neighbors=10)
+    knn.fit(x_train, y_train)
+    prediction = knn.predict(x_test)
+    print(accuracy_score(y_test, prediction))
