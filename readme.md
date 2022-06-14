@@ -10,6 +10,8 @@ main.py 的主函数中分别调用了 3 个函数 task1() task2() task3()，分
 
 同时，代码已备份至[Github](https://github.com/Mundanity-fc/PCA_with_Fisher_on_AR_Face_Database)。
 
+测试环境为 Python 3.9，所需第三方包已在 requirements.txt 中给出，执行`pip install -r requirements.txt` 进行安装
+
 使用到的两个自定义类 ImgProcess类 和 Fisher类，其说明在下面给出。
 
 ### ImgProcess类
