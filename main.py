@@ -65,7 +65,7 @@ def task3():
     imgProcess = ImgProcess('./dataset/')
     x_train, y_train, x_test, y_test = imgProcess.run()
     FDA = Fisher()
-    pca = PCA(n_components=50, whiten=True, random_state=0).fit(x_train)
+    pca = PCA(n_components=20, whiten=True, random_state=0).fit(x_train)
     x_train_pca = pca.transform(x_train)
     x_test_pca = pca.transform(x_test)
     FDA.initialization(x_train_pca, y_train)
