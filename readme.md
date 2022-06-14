@@ -6,7 +6,7 @@
 
 题中要求使用最近邻分类算法，但不是主要内容，因而采用 sklean 保重自带的 k 近邻算法。
 
-main.py 的主函数中分别调用了 3 个函数 task1() task2() task3()，分别对应了实验二中的 基本要求、中级要求和高级要求。拓展要求内容书写在了 Markdown 文件[拓展要求.md](./拓展要求.md)中。
+main.py 的主函数中分别调用了 3 个函数 task1() task2() task3()，分别对应了实验二中的 基本要求、中级要求和高级要求。
 
 同时，代码已备份至[Github](https://github.com/Mundanity-fc/PCA_with_Fisher_on_AR_Face_Database)。
 
