@@ -5,8 +5,11 @@ import numpy
 from PIL import Image
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
+from sklearn.decomposition import PCA
+from Fisher import Fisher
 
 def load_img_data(path):
+
     images = os.listdir(path)
     data_list = []
     label_list = []
@@ -56,7 +59,13 @@ if __name__ == '__main__':
     data_list, label_list = load_img_data('./dataset/')
     split_list = get_split_index()
     x_train, y_train, x_test, y_test = dataset_split(data_list, label_list, split_list)
-    knn = KNeighborsClassifier(n_neighbors=10)
-    knn.fit(x_train, y_train)
-    prediction = knn.predict(x_test)
-    print(accuracy_score(y_test, prediction))
+    Fisher = Fisher()
+
+    pca = PCA(n_components=50, whiten=True, random_state=0).fit(x_train)
+    x_train_pca = pca.transform(x_train)
+    x_test_pca = pca.transform(x_test)
+    Fisher.calculate(x_train_pca, y_train)
+    # knn = KNeighborsClassifier(n_neighbors=10)
+    # knn.fit(x_train_pca, y_train)
+    # prediction = knn.predict(x_test_pca)
+    # print(accuracy_score(y_test, prediction))
